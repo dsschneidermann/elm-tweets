@@ -1,0 +1,13 @@
+$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
+@import '~bootstrap-sass/assets/stylesheets/bootstrap/_mixins.scss';
+@import '~bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+
+
+.tweets .EmbeddedTweet-tweet {
+    background-color: white;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border: 1px solid burlywood;
+}
+
+@import 'twitter.scss'
