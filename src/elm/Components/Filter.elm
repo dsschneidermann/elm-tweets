@@ -1,6 +1,7 @@
 module Components.Filter exposing (..)
 
 import Model exposing (..)
+import Components.Json exposing (..)
 
 
 applyFilter : String -> Loadable (List Tweet) -> Loadable (List Tweet)

@@ -1,6 +1,7 @@
 module Model exposing (..)
 
 import Http exposing (..)
+import Components.Json exposing (..)
 
 
 type Loadable a
@@ -24,16 +25,6 @@ type alias Model =
 init : ( Model, Cmd Msg )
 init =
     ( Model Initial Initial Initial Initial Initial Initial Initial False, Cmd.none )
-
-
-type alias Tweet =
-    { id : String
-    , text : String
-    , name : String
-    , screen_name : String
-    , profile_image_url_https : String
-    , created_at : String
-    }
 
 
 type Msg

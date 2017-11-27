@@ -3,9 +3,9 @@ module Components.Tweets exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Http
-import Json.Decode as Decode
 import Model exposing (..)
 import Task exposing (..)
+import Components.Json exposing (..)
 
 
 renderTitle : String -> List (Html Msg)
@@ -114,20 +114,3 @@ tweetsSearch hashtag =
                     "http://localhost:5000/search/tweets?q=from%3A" ++ hashtag ++ "%20OR%20%23" ++ hashtag
             in
                 Http.send SearchHashtagResult (Http.get url resultDecoder)
-
-
-tweetDecoder : Decode.Decoder Tweet
-tweetDecoder =
-    Decode.map6 Tweet
-        (Decode.field "id_str" Decode.string)
-        (Decode.field "text" Decode.string)
-        (Decode.at [ "user", "name" ] Decode.string)
-        (Decode.at [ "user", "screen_name" ] Decode.string)
-        (Decode.at [ "user", "profile_image_url_https" ] Decode.string)
-        (Decode.field "created_at" Decode.string)
-
-
-resultDecoder : Decode.Decoder (Maybe (List Tweet))
-resultDecoder =
-    Decode.maybe
-        (Decode.field "statuses" (Decode.list tweetDecoder))
